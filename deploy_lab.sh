@@ -459,9 +459,9 @@ EOF
 
         TACRMM_NET=$(qm guest cmd $TACRMM_VMID network-get-interfaces | grep -oP '"ip-address" : "\K[^"]*' | grep 192)
 
-        if ! [ "$TACRMM_IP" = "$TACRMM_NET" ]; then
-                log_warn "Oops, looks like the IP changed to $TACRMM_NET but thats ok, we've accounted for the change"
-        fi
+        #if ! [ "$TACRMM_IP" = "$TACRMM_NET" ]; then
+        #        log_warn "Oops, looks like the IP changed to $TACRMM_NET but thats ok, we've accounted for the change"
+        #fi
 
         log_section "Configuring TacticalRMM VM then installing the TacticalRMM software... Please wait"
         execute ssh -o "ServerAliveInterval=60" -o "StrictHostKeyChecking=no" -t root@$TACRMM_NET "apt update;apt install -y wget curl sudo ufw;apt -y upgrade"
@@ -526,9 +526,9 @@ EOF
         OSSIEM_NET=$(qm guest cmd $OSSIEM_VMID network-get-interfaces | grep -oP '"ip-address" : "\K[^"]*' | grep 192)
 
 
-        if ! [ "$OSSIEM_IP" = "$OSSIEM_NET" ]; then
-                log_warn "Oops, looks like the IP changed to $OSSIEM_NET but thats ok, we've accounted for the change"
-        fi
+       # if ! [ "$OSSIEM_IP" = "$OSSIEM_NET" ]; then
+       #        log_warn "Oops, looks like the IP changed to $OSSIEM_NET but thats ok, we've accounted for the change"
+       # fi
 
         execute ssh -o "ServerAliveInterval=60" -o "StrictHostKeyChecking=no" -t root@$OSSIEM_NET "sysctl -w vm.max_map_count=262144"
 
