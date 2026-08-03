@@ -503,11 +503,11 @@ EOF
 
         log "Modifying the .env and docker-compose.yml file with your randomly generated credentials"
 
-        execute sed -i "s/\(_PASSWORD=\).*/\1$CYBER_CREDS/" $CONFIG_DIR/OSSIEM/.env
-        execute sed -i "/_PASSWORD=\${/!s/\(_PASSWORD=\).*/\1$CYBER_CREDS/" $CONFIG_DIR/OSSIEM/docker-compose.yml
-        execute sed -i "s/^MYSQL_ROOT_PASSWORD=.*/MYSQL_ROOT_PASSWORD=$DB_CREDS/" $CONFIG_DIR/OSSIEM/.env
-        execute sed -i "s/^MYSQL_PASSWORD=.*/MYSQL_PASSWORD=$DB_CREDS/" $CONFIG_DIR/OSSIEM/.env
-        execute sed -i "s/^MINIO_ROOT_PASSWORD=.*/MINIO_ROOT_PASSWORD=$DB_CREDS/" $CONFIG_DIR/OSSIEM/.env
+        #execute sed -i "s/\(_PASSWORD=\).*/\1$CYBER_CREDS/" $CONFIG_DIR/OSSIEM/.env
+        #execute sed -i "/_PASSWORD=\${/!s/\(_PASSWORD=\).*/\1$CYBER_CREDS/" $CONFIG_DIR/OSSIEM/docker-compose.yml
+        #execute sed -i "s/^MYSQL_ROOT_PASSWORD=.*/MYSQL_ROOT_PASSWORD=$DB_CREDS/" $CONFIG_DIR/OSSIEM/.env
+        #execute sed -i "s/^MYSQL_PASSWORD=.*/MYSQL_PASSWORD=$DB_CREDS/" $CONFIG_DIR/OSSIEM/.env
+        #execute sed -i "s/^MINIO_ROOT_PASSWORD=.*/MINIO_ROOT_PASSWORD=$DB_CREDS/" $CONFIG_DIR/OSSIEM/.env
 
         # Deploy Wazuh VM
 
@@ -791,8 +791,8 @@ main() {
         download_isos
         configure_networking
         create_opnsense_vm
-        #create_tacrmm_vm
-        #create_wazuh_infrastructure
+        create_tacrmm_vm
+        create_wazuh_infrastructure
 
         log_section "Setup Complete"
     log_info "Lab environment setup completed successfully!"
