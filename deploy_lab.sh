@@ -403,11 +403,11 @@ create_opnsense_vm() {
 
     sleep 45
 
-    OPNSENSE_NET=$(qm guest cmd $OPNSENSE_VMID network-get-interfaces | grep -oP '"ip-address" : "\K[^"]*' | grep 192)
+    #OPNSENSE_NET=$(qm guest cmd $OPNSENSE_VMID network-get-interfaces | grep -oP '"ip-address" : "\K[^"]*' | grep 192)
 
-    if ! [ "$OPNSENSE_IP" = "$OPNSENSE_NET" ]; then
+    #if ! [ "$OPNSENSE_IP" = "$OPNSENSE_NET" ]; then
             log_warn "Oops, looks like the IP changed to $OPNSENSE_NET but thats ok, we've accounted for the change"
-    fi
+    #fi
 }
 
 create_tacrmm_vm() {
